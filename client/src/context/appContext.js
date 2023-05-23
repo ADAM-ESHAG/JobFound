@@ -1,4 +1,4 @@
-import {useState} from 'react-dom'
+import React, {useState, useReducer, useContext} from 'react'
 
 const initialState = {
     isLoading: false,
@@ -18,4 +18,8 @@ const AppProvider = ({ children }) => {
     )
 }
 
-export default AppProvider
+const useAppContext = () => {
+    return useContext(AppContext);
+}
+
+export {AppProvider, initialState, useAppContext}
