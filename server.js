@@ -1,9 +1,15 @@
 import express from 'express';
 const app = express();
 
+// Middleware
+notFoundMiddleware
+import notFoundMiddleware from './middleware/not-Found.js';
+
 app.get('/', (req, res) => {
     res.send('wellcom!');
 })
+
+app.use(notFoundMiddleware);
 
 const port = process.env.PORT || 5000;
 
