@@ -14,9 +14,9 @@ import jobsRouter from './routes/jobsRoutes.js'
 notFoundMiddleware
 import notFoundMiddleware from './middleware/not-Found.js';
 import errorHandlerMiddleware from './middleware/error-handler.js';
-import { error } from 'console';
 
-app.use(express.json);
+
+// app.use(express.json);
 
 app.get('/', (req, res) => {
     res.send('wellcom!');
