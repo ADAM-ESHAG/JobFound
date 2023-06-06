@@ -1,3 +1,4 @@
+import 'express-async-errors'
 import express from 'express';
 const app = express();
 import dotenv from 'dotenv';
@@ -16,7 +17,7 @@ import notFoundMiddleware from './middleware/not-Found.js';
 import errorHandlerMiddleware from './middleware/error-handler.js';
 
 
-// app.use(express.json);
+app.use(express.json);
 
 app.get('/', (req, res) => {
     res.send('wellcom!');
