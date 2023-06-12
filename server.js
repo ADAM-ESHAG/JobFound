@@ -1,3 +1,4 @@
+
 import 'express-async-errors'
 import express from 'express';
 const app = express();
@@ -16,11 +17,14 @@ notFoundMiddleware
 import notFoundMiddleware from './middleware/not-Found.js';
 import errorHandlerMiddleware from './middleware/error-handler.js';
 
-
 app.use(express.json);
 
 app.get('/', (req, res) => {
-    res.send('wellcom!');
+    res.json({msg: 'API!'});
+});
+
+app.get('/api/v1', (req, res) => {
+    res.json({msg: 'wellcom!'});
 })
 
 app.use('/api/v1/auth', authRouter);
