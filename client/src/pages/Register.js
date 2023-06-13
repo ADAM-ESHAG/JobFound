@@ -13,22 +13,22 @@ const initialState = {
 const Register = () => {
     const [values, setValues] = useState(initialState);
     // Global state and use navigate
-    const {isLoading, showAlert, displayAlert, registerUser} = useAppContext(initialState)
+    const {isLoading, showAlert, displayAlert, registerUser} = useAppContext();
 
     const toggleMember = () => {
         setValues({...values, isMember: !values.isMember})
     }
 
     const handleChange = (e) => {
-        setValues({...values, [e.target.name]: e.target.value});
-    }
+        setValues({ ...values, [e.target.name]: e.target.value });
+    };
 
     const onSubmit = (e) => {
         e.preventDefault();
         const {name, email, password, isMember} = values;
-        if(!email || !password || (!isMember && !name)) {
+        if (!email || !password || (!isMember && !name)) {
             displayAlert();
-            return
+            return; 
         }
         const currentUser = {name, email, password};
         if(isMember) {
@@ -50,21 +50,21 @@ const Register = () => {
                 {!values.isMember && (<FormRow 
                     type="text" 
                     name="name" 
-                    value={values.name} 
+                    defaultValue={values.name}
                     handleChange={handleChange} 
                 />)}
                 {/* Name email */}
                 <FormRow 
                     type="email" 
                     name="email" 
-                    value={values.email} 
+                    defaultValue={values.email}
                     handleChange={handleChange} 
                 />
                 {/* Name Password */}
                 <FormRow 
                     type="password" 
                     name="password" 
-                    value={values.name} 
+                    defaultValue={values.password} 
                     handleChange={handleChange} 
                 />
                 <button type="submit" className="btn btn-block" disabled={isLoading}>
