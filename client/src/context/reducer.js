@@ -27,12 +27,14 @@ const reducer = (state, action) => {
     if (action.type === REGISTER_USER_SUCCESS) {
         return {
             ...state,
-            isLoading: false,
+            isLoading: false
+            ,
+            token: action.payload.token,
             user: action.payload.user,
             userLocation: action.payload.location,
             jobLocation: action.payload.location,
             showAlert: true,
-            alertType: 'Success',
+            alertType: 'success',
             alertText: action.payload.alertText,
         };
     }
@@ -41,7 +43,7 @@ const reducer = (state, action) => {
             ...state,
             isLoading: false,
             showAlert: true,
-            alertType: 'Danger',
+            alertType: 'danger',
             alertText: action.payload.msg,
         };
     }

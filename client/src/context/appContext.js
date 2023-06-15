@@ -9,6 +9,7 @@ const initialState = {
     alertText: '',
     alertType: '',
     user: null,
+    token: null,
     userLocation: '',
     jobLocation: '',
 }
@@ -31,9 +32,9 @@ const AppProvider = ({ children }) => {
     const registerUser = async (currentUser) => {
         dispatch({type: REGISTER_USER_BEGIN});
         try {
-            const { data }= await axios.post('/api/v1/auth/register', currentUser);
-            console.log(data);
-            const {user, token, location} = data;
+            const response = await axios.post('/api/v1/auth/register', currentUser);
+            console.log(response);
+            const {user, token, location} = response.data;
             dispatch ({
                 type: REGISTER_USER_SUCCESS,
                 payload: {user, token, location}
