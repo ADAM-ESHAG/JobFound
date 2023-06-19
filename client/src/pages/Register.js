@@ -50,21 +50,21 @@ const Register = () => {
                 {!values.isMember && (<FormRow 
                     type="text" 
                     name="name" 
-                    defaultValue={values.name}
+                    value={values.name}
                     handleChange={handleChange} 
                 />)}
                 {/* Name email */}
                 <FormRow 
                     type="email" 
                     name="email" 
-                    defaultValue={values.email}
+                    value={values.email}
                     handleChange={handleChange} 
                 />
                 {/* Name Password */}
                 <FormRow 
                     type="password" 
                     name="password" 
-                    defaultValue={values.password} 
+                    valuealue={values.password} 
                     handleChange={handleChange} 
                 />
                 <button type="submit" className="btn btn-block" disabled={isLoading}>

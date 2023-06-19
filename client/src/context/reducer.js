@@ -27,15 +27,14 @@ const reducer = (state, action) => {
     if (action.type === REGISTER_USER_SUCCESS) {
         return {
             ...state,
-            isLoading: false
-            ,
+            isLoading: false,
             token: action.payload.token,
             user: action.payload.user,
             userLocation: action.payload.location,
             jobLocation: action.payload.location,
             showAlert: true,
             alertType: 'success',
-            alertText: action.payload.alertText,
+            alertText: 'User Created!',
         };
     }
     if (action.type === REGISTER_USER_ERROR) {
@@ -47,7 +46,7 @@ const reducer = (state, action) => {
             alertText: action.payload.msg,
         };
     }
-    throw new Error(`no such action :${action.type}`);
+    throw new Error(`no such action : ${action.type}`);
 };
 
 
