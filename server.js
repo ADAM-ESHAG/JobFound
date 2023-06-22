@@ -17,14 +17,15 @@ notFoundMiddleware
 import notFoundMiddleware from './middleware/not-Found.js';
 import errorHandlerMiddleware from './middleware/error-handler.js';
 
+
 app.use(express.json);
 
 app.get('/', (req, res) => {
-    res.json({msg: 'API!'});
+    res.json({msg: 'Wellcom!'});
 });
 
 app.get('/api/v1', (req, res) => {
-    res.json({msg: 'wellcom!'});
+    res.json({msg: 'API!'});
 })
 
 app.use('/api/v1/auth', authRouter);

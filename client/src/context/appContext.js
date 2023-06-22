@@ -1,7 +1,7 @@
-import React, {useState, useReducer, useContext, REGISTER_USER_BEGIN, REGISTER_USER_SUCCESS, REGISTER_USER_ERROR} from 'react'
-import reducer from './reducer';
+import React, {useState, useReducer, useContext } from 'react'
+import reducer from './reducer.js';
 import axios from "axios"
-import { DISPLAY_ALERT, CLEAR_ALERT } from './actions';
+import { DISPLAY_ALERT, CLEAR_ALERT, REGISTER_USER_BEGIN, REGISTER_USER_SUCCESS, REGISTER_USER_ERROR } from './actions.js';
 
 const initialState = {
     isLoading: false,
@@ -32,19 +32,19 @@ const AppProvider = ({ children }) => {
     const registerUser = async (currentUser) => {
         dispatch({ type: REGISTER_USER_BEGIN });
         try {
-            const response = await axios.post('/api/v1/auth/register', currentUser);
-            console.log(response);
-            const {user, token, location} = response.data;
+            const data = await axios.post('/api/v1/auth/register', currentUser);
+            console.log(data);
+            const {user, token, location} = data;
             dispatch ({
                 type: REGISTER_USER_SUCCESS,
                 payload: {user, token, location },
             })
             // Local Storage later
         } catch (error) {
-            console.log(error.response);
+            // console.log(error.response);
             dispatch({
                 type: REGISTER_USER_ERROR,
-                payload: {msg: error.response.data.msg},
+                payload: {msg: 'Error'},
             })
         }
         clearAlert();
